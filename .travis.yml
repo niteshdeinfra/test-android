@@ -1,0 +1,29 @@
+language android
+
+jdk
+  - oraclejdk8
+
+android
+  components
+    # Specify required build tools and SDK versions
+    - build-tools-29.0.3
+    - android-29
+    - build-tools-34.0.3
+    - android-34
+
+  # Optional Set up emulator for UI testing
+  emulator
+    - nexus5x-api-29
+
+before_script
+  # Install any necessary dependencies
+  - chmod +x gradlew
+  - .gradlew dependencies
+
+script
+  # Build and test the project
+  - .gradlew build
+
+# Optional Run additional tests or tasks
+after_success
+  - .gradlew assembleRelease  # Create a release APK
