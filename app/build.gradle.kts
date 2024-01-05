@@ -24,6 +24,11 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+
+            signingConfig?.storeFile = System.getenv()["CM_KEYSTORE_PATH"]?.let { file(it) }
+            signingConfig?.keyAlias = System.getenv()["CM_KEY_ALIAS"]
+            signingConfig?.storePassword = System.getenv()["CM_KEYSTORE_PASSWORD"]
+            signingConfig?.keyPassword = System.getenv()["CM_KEY_PASSWORD"]
         }
     }
     compileOptions {
@@ -48,9 +53,9 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.10.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.activity:activity-compose:1.7.0")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation("androidx.activity:activity-compose:1.8.2")
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")

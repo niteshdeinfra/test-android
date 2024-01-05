@@ -1,5 +1,6 @@
 package com.nb.test
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.webkit.WebResourceError
 import android.widget.Button
@@ -12,6 +13,7 @@ import android.webkit.WebViewClient
 import android.widget.Toast
 
 class MainActivity : ComponentActivity() {
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

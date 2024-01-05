@@ -6,6 +6,8 @@ workflows:
     environment:
       vars:
         PACKAGE_NAME: "com.nb.test"
+      android_signing:
+        - keystore_reference
     scripts:
       - name: Set Android SDK location
         script: | 
@@ -19,4 +21,4 @@ workflows:
           - nitesh@deinfra.io
         notify:
           success: true
-          failure: false
+          failure: true
