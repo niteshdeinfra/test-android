@@ -24,7 +24,7 @@ android {
         create("release") {
             // You need to specify either an absolute path or include the
             // keystore file in the same directory as the build.gradle file.
-            storeFile = file("mysignedkey.jks")
+            storeFile = file("./mysignedkey.jks")
             storePassword = "nitesh12"
             keyAlias = "signedkey"
             keyPassword = "nitesh12"
