@@ -20,15 +20,23 @@ android {
         }
     }
 
+    signingConfigs {
+        create("release") {
+            // You need to specify either an absolute path or include the
+            // keystore file in the same directory as the build.gradle file.
+            storeFile = file("mysignedkey.jks")
+            storePassword = "nitesh12"
+            keyAlias = "signedkey"
+            keyPassword = "nitesh12"
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
 
-            signingConfig?.storeFile = System.getenv()["CM_KEYSTORE_PATH"]?.let { file(it) }
-            signingConfig?.keyAlias = System.getenv()["CM_KEY_ALIAS"]
-            signingConfig?.storePassword = System.getenv()["CM_KEYSTORE_PASSWORD"]
-            signingConfig?.keyPassword = System.getenv()["CM_KEY_PASSWORD"]
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
