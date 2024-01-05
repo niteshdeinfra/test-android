@@ -7,7 +7,7 @@ workflows:
       vars:
         PACKAGE_NAME: "com.nb.test"
       android_signing:
-        - keystore_reference
+        - nitesh
     scripts:
       - name: Set Android SDK location
         script: | 
